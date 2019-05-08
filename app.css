@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: 100%;
+    padding-right: 100px;
+    padding-left: 100px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  #myInput {
+    margin-top: 40px; 
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 60%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 40px;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+  }
+  
+  table th, table td {
+    text-align: left;
+    padding: 12px;
+  }
+  
+  table tr {
+    border-bottom: 1px solid #ddd;
+  }
+
+  table th {
+    background-color: #f1f1f1;
+  }
+  
+   table tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  .actions {
+    float: right;
+    margin-top: 30px;
+  }
+
+  .actions a {
+      background-color:black;
+      color: white;
+      text-align: center;
+      display: inline-block;
+      border-radius: 20px;
+      padding: 5px 10px;
+      text-decoration: none;
+      margin-right: 10px;
+  }
