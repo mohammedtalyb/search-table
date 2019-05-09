@@ -631,10 +631,8 @@ function numPages(){
  
 
 //searching table contents
-var c_page;
 var searchedResults = [];
 function search() {
-    c_page = current_page;
     searchedResults = [];
     var input, filter
     input = document.getElementById("myInput");
