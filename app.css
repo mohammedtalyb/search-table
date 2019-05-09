@@ -46,17 +46,18 @@
   }
 
   .actions {
-    float: right;
-    margin-top: 30px;
+    position: fixed;
+    bottom: 11%;
+    right: 10%;
+    z-index: 999;
   }
-
   .actions a {
       background-color:black;
       color: white;
       text-align: center;
       display: inline-block;
       border-radius: 20px;
-      padding: 5px 10px;
+      padding: 10px 20px;
       text-decoration: none;
       margin-right: 10px;
   }
