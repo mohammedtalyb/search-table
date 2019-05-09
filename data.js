@@ -1,4 +1,4 @@
-var jsonData = [
+export var jsonData = [
     {
       "id": "38172",
       "employee_name": "test23",
@@ -526,4 +526,3 @@ var jsonData = [
     }
   ]
 
-  export {jsonData};
