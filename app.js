@@ -1,4 +1,4 @@
-var jsonData = [
+var jsonData = `[
 {
     "id": "38172",
     "employee_name": "test23",
@@ -522,13 +522,51 @@ var jsonData = [
     "employee_name": "BBBBB",
     "employee_salary": "1230",
     "employee_age": "23",
+    "profile_image": ""
+},
+{
+    "id": "38172",
+    "employee_name": "test23",
+    "employee_salary": "20",
+    "employee_age": "10",
+    "profile_image": ""
+},
+{
+    "id": "38172",
+    "employee_name": "test23",
+    "employee_salary": "20",
+    "employee_age": "10",
+    "profile_image": ""
+},
+{
+    "id": "38172",
+    "employee_name": "test23",
+    "employee_salary": "20",
+    "employee_age": "10",
+    "profile_image": ""
+},
+{
+    "id": "38172",
+    "employee_name": "test23",
+    "employee_salary": "20",
+    "employee_age": "10",
+    "profile_image": ""
+},
+{
+    "id": "38172",
+    "employee_name": "test23",
+    "employee_salary": "20",
+    "employee_age": "10",
     "profile_image": ""
 }
 ]
+`;
 
-var data = editId(jsonData);
+
+
+var data = editId(JSON.parse(jsonData));
 /**
- * edits the id pf every element
+ * edits the id of every element
  * @param {Array} json - original data
  */
 function editId(json) {
@@ -567,24 +605,24 @@ function extractingheader(headingArr) {
     }
 }
 
-var current_page = 1;
-var records_per_page = 10;
+var currentPage = 1;
+var recordsPerPage = 10;
 /**
  * this function shows previous page
  */
 function prevPage(){
-    if (current_page > 1) {
-        current_page--;
-        loadTable(current_page);
+    if (currentPage > 1) {
+        currentPage--;
+        loadTable(currentPage);
     }
 }
 /**
  * this function shows next page
  */
 function nextPage(){
-    if (current_page < numPages()) {
-        current_page++;
-        loadTable(current_page);
+    if (currentPage < numPages()) {
+        currentPage++;
+        loadTable(currentPage);
     }
 }
 
@@ -594,8 +632,8 @@ var isSearched = false;
  * @param {number} page - this is the current page number of table
  */
 function loadTable(page){
-    var page_span = document.getElementById("page");
-    page_span.innerHTML = page + "/" + numPages();
+    var pageSpan = document.getElementById("page");
+    pageSpan.innerHTML = page + "/" + numPages();
     if(isSearched){
         createTableData(searchedResults,page);
         toggle(page,searchedResults);
@@ -613,7 +651,7 @@ function loadTable(page){
 function toggle(page,arr) {
     var btnNext = document.getElementById("btnNext");
     var btnPrev = document.getElementById("btnPrev");
-    if(arr.length<10) {
+    if(arr.length <= recordsPerPage) {
         btnPrev.style.visibility = "hidden";
         btnNext.style.visibility = "hidden";
     } else if(page == 1) {
@@ -621,6 +659,7 @@ function toggle(page,arr) {
         btnNext.style.visibility = "visible";
     } else if(page == numPages()) {
         btnNext.style.visibility = "hidden";
+        btnPrev.style.visibility = "visible";
     } else {
         btnPrev.style.visibility = "visible";
         btnNext.style.visibility = "visible";
@@ -632,9 +671,9 @@ function toggle(page,arr) {
  */
 function numPages(){
     if(isSearched) {
-        return Math.ceil(searchedResults.length / records_per_page);
+        return Math.ceil(searchedResults.length / recordsPerPage);
     } else {
-        return Math.ceil(data.length / records_per_page);
+        return Math.ceil(data.length / recordsPerPage);
     }
 }
 
@@ -647,16 +686,16 @@ function search() {
     isSearched = false;
     var input = document.getElementById("myInput");
     var filter = input.value.toUpperCase();
-    var page_span = document.getElementById("page");
+    var pageSpan = document.getElementById("page");
     for(let obj of data) {
-        if(obj.employee_name.toUpperCase().indexOf(filter)!=-1) searchedResults.push(obj);
+        if(obj.employee_name.toUpperCase().includes(filter)) searchedResults.push(obj);
     }
     if(searchedResults) {
         isSearched = true;
-        current_page = 1;
-        page_span.innerHTML = current_page + "/" + numPages();
-        createTableData(searchedResults,current_page);
-        toggle(current_page,searchedResults);
+        currentPage = 1;
+        pageSpan.innerHTML = currentPage + "/" + numPages();
+        createTableData(searchedResults,currentPage);
+        toggle(currentPage,searchedResults);
     }
 }
 
@@ -664,11 +703,11 @@ var tbody = table.createTBody();
 /**
  * this function creates the table row and fill it with details
  * @param {Array} tableData - it contains data from which table is to be created
- * @param {number} current_page - this is the current page number of table
+ * @param {number} currentPage - this is the current page number of table
  */
-function createTableData(tableData,current_page) {
+function createTableData(tableData,currentPage) {
     tbody.innerHTML = "";
-    for(let i = (current_page-1)*records_per_page; i<current_page*records_per_page;i++){
+    for(let i = (currentPage-1)*recordsPerPage; i<currentPage*recordsPerPage;i++){
         let tr = tbody.insertRow();
         if(tableData[i]) {
             for(let heading of headings) {

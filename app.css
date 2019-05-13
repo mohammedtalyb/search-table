@@ -1,26 +1,32 @@
 * {
     box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+
   }
 
   .container {
-    width: 100%;
-    padding-right: 100px;
-    padding-left: 100px;
-    margin-right: auto;
-    margin-left: auto;
+    width: 80%;
+    margin: 0px auto;
   }
   
-  #myInput {
-    margin-top: 40px; 
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    width: 60%;
-    font-size: 16px;
-    padding: 12px 20px 12px 40px;
-    border: 1px solid #ddd;
-    margin-bottom: 40px;
-  }
-  
+#myInput {
+  margin-top: 40px; 
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 60%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: none;
+  border: 1px solid #ddd;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  outline: 0;
+}
+
+#myInput:focus {
+  border-color: black;
+}
+
   table {
     border-collapse: collapse;
     width: 100%;
@@ -46,10 +52,8 @@
   }
 
   .actions {
-    position: fixed;
-    bottom: 11%;
-    right: 10%;
-    z-index: 999;
+    margin: 40px 0;
+    float: right;
   }
   .actions a {
       background-color:black;
